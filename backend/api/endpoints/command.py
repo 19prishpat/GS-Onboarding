@@ -50,7 +50,7 @@ def delete_command(id: int, db: Session = Depends(get_db)):
     """
     # TODO:(Member) Implement this endpoint
     command = db.get(Command, id)
-    if not command:
+    if command is None:
         raise HTTPException(status_code=404, detail="Command not found")
     db.delete(command)
     db.commit()
